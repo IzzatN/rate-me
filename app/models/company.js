@@ -9,7 +9,10 @@ export default class CompanyModel extends Model {
   @attr('string') address;
   @attr('string') backgroundImgUrl;
   @attr('string') contactPhone;
+  @attr('string') email;
   @attr('boolean') isBranch;
+
+  
 
   @hasMany() services;
   @hasMany('company') branches;
