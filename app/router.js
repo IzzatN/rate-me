@@ -13,5 +13,6 @@ Router.map(function () {
     this.route('company', { path: '/company/:id' });
   });
 
+  this.route('business');
   this.route('welcome');
 });
