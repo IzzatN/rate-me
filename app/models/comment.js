@@ -5,4 +5,5 @@ export default class CommentModel extends Model {
   @attr('date') createdAt;
 
   @belongsTo() user;
+  @belongsTo() service;
 }

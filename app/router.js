@@ -14,5 +14,6 @@ Router.map(function () {
   });
 
   this.route('business');
+  // business ichiga service route yaratib, formani qo`shib template, name/description property, company, save
   this.route('welcome');
 });
