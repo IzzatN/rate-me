@@ -28,7 +28,7 @@
                     <span class="text-gray-500 font-medium">{{moment-from-now comment.createdAt 'M/D/YYYY'}}</span>
                     <span class="text-gray-500 font-medium">&middot;</span>
                     <button type="button" class="text-gray-900 font-medium">Reply</button>
-                    <button type="button" class="text-gray-900 font-medium">Delete</button>
+                    <button {{on 'click' (fn this.deleteComment comment)}} type="button" class="text-gray-900 font-medium">Delete</button>
                     {{!-- actionni ulash --}}
                   </div>
                 </div>

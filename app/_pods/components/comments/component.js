@@ -26,5 +26,11 @@ export default class Comments extends Component {
         this.fetchComments();
     }
 
+    @action
+    async deleteComment(comment) {
+        comment.destroyRecord();
+        this.fetchComments();
+    }
+
    // destroyRecord comment actioni
 }
