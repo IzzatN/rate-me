@@ -5,6 +5,7 @@ export default class IndexRoute extends Route {
   @service('current-user') currentUserService;
 
   beforeModel() {
+    console.log('dd')
     // return this.currentUserService.load(true).then((currentUser) => {
     //   if (!currentUser) {
     //     this.transitionTo('welcome');

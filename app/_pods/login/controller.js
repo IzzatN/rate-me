@@ -29,8 +29,6 @@ export default class LoginController extends Controller {
         identification,
         password
       );
-
-      this.currentUserService.load(true);
     } catch (error) {
       this.errorMessage = error.errors[0].detail || error;
     }
