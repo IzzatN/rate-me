@@ -13,7 +13,9 @@ Router.map(function () {
     this.route('company', { path: '/company/:id' });
   });
 
-  this.route('business');
+  this.route('business', function() {
+    this.route('add-service');
+  });
   // business ichiga service route yaratib, formani qo`shib template, name/description property, company, save
   this.route('welcome');
 });
