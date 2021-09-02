@@ -7,6 +7,10 @@ export default class LoginController extends Controller {
   @service session;
   @service('current-user') currentUserService;
 
+  queryParams = ['isConsumer'];
+
+  isConsumer = false;
+
   @tracked errorMessage;
 
   @action
