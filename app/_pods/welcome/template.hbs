@@ -50,30 +50,31 @@
               </p>
               <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                 <div class="flex flex-col self-center max-w-2xl mx-auto">
-                  <dl class="text-white mb-6 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
-                    <div class="bg-blue-400 px-4 py-5 sm:p-10">
-                      <dt class="text-base font-normal">
-                        Enter as a Consumer
-                      </dt>
-                      <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                        <LinkTo @route="login" @query={{hash isConsumer=true}} class="flex items-baseline text-2xl font-semibold">
-                          User
-                        </LinkTo>
-                      </dd>
-                    </div>
+                  {{#unless this.currentUser}}
+                    <dl class="text-white mb-6 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
+                      <div class="bg-blue-400 px-4 py-5 sm:p-10">
+                        <dt class="text-base font-normal">
+                          Enter as a Consumer
+                        </dt>
+                        <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                          <LinkTo @route="login" @query={{hash isConsumer=true}} class="flex items-baseline text-2xl font-semibold">
+                            User
+                          </LinkTo>
+                        </dd>
+                      </div>
 
-                    <div class="bg-yellow-400 px-4 py-5 sm:p-10">
-                      <dt class="text-base font-normal">
-                        Enter as a Company
-                      </dt>
-                      <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                        <LinkTo @route="login" class="flex items-baseline text-2xl font-semibold">
-                          Company
-                        </LinkTo>
-                      </dd>
-                    </div>
-
-                  </dl>
+                      <div class="bg-yellow-400 px-4 py-5 sm:p-10">
+                        <dt class="text-base font-normal">
+                          Enter as a Company
+                        </dt>
+                        <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+                          <LinkTo @route="login" class="flex items-baseline text-2xl font-semibold">
+                            Company
+                          </LinkTo>
+                        </dd>
+                      </div>
+                    </dl>
+                  {{/unless}}
 
                   <div class="flex self-center text-sm">
                     <LinkTo @route="main" class="font-medium text-white hover:text-gray-400">
