@@ -19,4 +19,5 @@ export default class CompanyModel extends Model {
   @belongsTo('company', {
     inverse: 'parent'
   }) parent;
+  @belongsTo() user;
 }

@@ -14,4 +14,5 @@ export default class ProfileRoute extends Route {
   model() {
     return this.store.findRecord('user', this.currentUser.id);
   }
+
 }
