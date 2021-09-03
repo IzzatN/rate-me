@@ -16,6 +16,9 @@ Router.map(function () {
   this.route('business', function() {
     this.route('add-service');
   });
+
+  this.route('profile');
+
   this.route('welcome', { path: '/' });
 
   this.route('login');
