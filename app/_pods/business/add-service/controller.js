@@ -21,7 +21,8 @@ export default class AddServiceController extends Controller {
         let service = this.store.createRecord('service', { name: this.name, description: this.description, company: company });
 
         await service.save();
-        this.service = '';
+        this.name = '';
+        this.description = '';
     }
 
 }
