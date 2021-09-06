@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import { underscore } from '@ember/string';
 import { pluralize } from 'ember-inflector';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   host = ENV.API.host;
