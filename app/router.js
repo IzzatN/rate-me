@@ -24,4 +24,6 @@ Router.map(function () {
   this.route('login');
   this.route('logout');
   this.route('register');
+
+  this.route('loading');
 });
