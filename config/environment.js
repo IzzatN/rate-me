@@ -26,7 +26,12 @@ module.exports = function (environment) {
     API: {
       // configure for specific environments below
       host: ''
-    }
+    },
+
+    'ember-cli-notifications': {
+      autoClear: true,
+      clearDuration: 10000,
+    },
   };
 
   if (environment === 'development') {

@@ -1,0 +1,7 @@
+{{#if @field}}
+  <p class="leading-normal text-red-500 text-sm float-right pt-1 mb-0">
+    {{#each @field.validation as |error|}}
+      {{error}}{{unless (eq @field.validation.lastObject error) ', '}}
+    {{/each}}
+  </p>
+{{/if}}
