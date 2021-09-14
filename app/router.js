@@ -26,4 +26,5 @@ Router.map(function () {
   this.route('register');
 
   this.route('loading');
+  this.route('service-list');
 });
