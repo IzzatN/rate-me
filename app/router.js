@@ -11,6 +11,8 @@ Router.map(function () {
     this.route('category', { path: '/category/:value' });
     this.route('service', { path: '/service/:id' });
     this.route('company', { path: '/company/:id' });
+    this.route('services');
+
   });
 
   this.route('business', function() {
@@ -26,5 +28,4 @@ Router.map(function () {
   this.route('register');
 
   this.route('loading');
-  this.route('service-list');
 });
