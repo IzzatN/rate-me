@@ -1,7 +1,7 @@
 {{page-title "Register"}}
 
 <div class="min-h-screen bg-white flex">
-  <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+  <div class="flex-1 flex flex-col relative justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
     <div class="mx-auto w-full max-w-sm lg:w-96">
       <div>
         <img class="block h-12 w-auto" src="{{img-src 'images/logo-circle.png'}}" alt="Auto Aid">
@@ -68,7 +68,7 @@
         </div> --}}
 
         <div class="mt-6">
-          <form {{on "submit" this.register}} class="space-y-6">
+          <form {{on "submit" this.register}} class="space-y-5">
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700">
                 Email address
@@ -167,7 +167,7 @@
               </button>
             </div>
 
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between pb-8">
               <div class="flex items-center">
                 Already have an account?
               </div>
@@ -177,6 +177,12 @@
                   Sign In
                 </LinkTo>
               </div>
+            </div>
+
+            <div class="absolute bottom-0 pb-6 items-center">
+              <LinkTo @route="welcome" class="text-sm text-gray-400 hover:text-gray-500">
+                Return back
+              </LinkTo>
             </div>
           </form>
         </div>

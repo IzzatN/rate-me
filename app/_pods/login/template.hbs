@@ -124,12 +124,16 @@
               </div>
 
               <div class="text-sm">
-                <LinkTo @route="register">
-                  <a href="#" class="font-medium text-yellow-500 hover:text-yellow-400">
-                    Sign Up
-                  </a>
+                <LinkTo @route="register" class="font-medium text-yellow-500 hover:text-yellow-400">
+                  Sign Up
                 </LinkTo>
               </div>
+            </div>
+
+            <div class="absolute bottom-0 pb-6 items-center">
+              <LinkTo @route="welcome" class="text-sm text-gray-400 hover:text-gray-500">
+                Return back
+              </LinkTo>
             </div>
           </form>
         </div>
