@@ -14,7 +14,8 @@ module.exports = {
         abrilFatface: ['Abril Fatface', 'sans-serif'],
         karantina: ['Karantina', 'sans-serif'],
         abel: ['Abel', 'sans-serif'],
-        bebasNeue: ['Bebas Neue', 'sans-serif']
+        bebasNeue: ['Bebas Neue', 'sans-serif'],
+        venusRising: ['Venus Rising', 'sans-serif']
       },
       extend: {
         colors: {
