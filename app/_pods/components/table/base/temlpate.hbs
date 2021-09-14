@@ -1,0 +1,36 @@
+{{#light-table table
+  height=(if @height @height "100%")
+  extra=(hash
+   tableName=tableName
+  )
+  width="100%"
+  responsive=true
+  class=(concat "table table-hover table-sm data-table " class)
+  as |t|}}
+  {{t.head
+   fixed=true
+   resizeOnDrag=true
+   onColumnClick=(action "onColumnClick")
+   iconSortable=""
+   iconAscending="fa fa-sort-asc"
+   iconDescending="fa fa-sort-desc"}}
+  {{#t.body
+   canSelect=false
+   selectOnClick=false
+   onRowClick=@onRowClick
+   rowComponent=rowComponent
+   as |body|}}
+    {{#if isLoading}}
+      <div class="lds-ring centered">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    {{else if (and (not loading) table.isEmpty @emptyTableText)}}
+      {{#body.no-data}}
+        <h3 class="text-center">{{@emptyTableText}}</h3>
+      {{/body.no-data}}
+    {{/if}}
+  {{/t.body}}
+{{/light-table}}
