@@ -49,12 +49,17 @@
             </div>
             <div class="relative px-4 py-16 sm:px-6 sm:py-16 lg:py-24 lg:px-8">
               <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                <span class="block text-white uppercase font-montserrat">Full Service Auto Care</span>
+                <span class="block text-white uppercase font-montserrat">Auto Aid</span>
               </h1>
-              <p class="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
+              <p class="max-w-lg -m-1 mx-auto text-center text-indigo-200 sm:max-w-3xl">Full Service Auto Care</p>
+             {{!--  <p class="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
                 GOALS UNITED BORDER <br>(MAQSADLAR BIRLASHGAN SARHAD("-")
+              </p> --}}
+
+              <p class="mt-16 max-w-lg mx-auto text-center text-lg text-indigo-200 sm:max-w-3xl">
+                Enter as
               </p>
-              <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+              <div class="max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                 <div class="flex flex-col self-center max-w-2xl mx-auto">
                   {{#if this.currentUser}}
                     <LinkTo @route="main" class="self-center bg-blue-300 bg-opacity-40 hover:bg-opacity-50 rounded px-8 py-3 text-lg text-gray-200 hover:text-white hover:underline">
@@ -63,27 +68,17 @@
                   {{else}}
                     <dl
                       class="text-white mb-6 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
-                      <div class="bg-blue-400 px-4 py-5 sm:p-10">
-                        <dt class="text-base font-normal">
-                          Enter as a Consumer
-                        </dt>
-                        <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                          <LinkTo @route="login" @query={{hash isConsumer=true}}
-                            class="flex items-baseline text-2xl font-semibold">
-                            User
-                          </LinkTo>
-                        </dd>
+                      <div class="text-center bg-blue-400 px-4 py-5 sm:p-10">
+                        <LinkTo @route="login" @query={{hash isConsumer=true}}
+                          class="text-xl font-semibold">
+                          User
+                        </LinkTo>
                       </div>
 
-                      <div class="bg-yellow-400 px-4 py-5 sm:p-10">
-                        <dt class="text-base font-normal">
-                          Enter as a Company
-                        </dt>
-                        <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                          <LinkTo @route="login" class="flex items-baseline text-2xl font-semibold">
-                            Company
-                          </LinkTo>
-                        </dd>
+                      <div class="text-center bg-yellow-400 px-4 py-5 sm:p-10">
+                        <LinkTo @route="login" class="flex items-baseline text-xl font-semibold">
+                          Company
+                        </LinkTo>
                       </div>
                     </dl>
                     <div class="flex self-center text-sm">
