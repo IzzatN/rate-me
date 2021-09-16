@@ -1,22 +1,100 @@
-import Controller from '@ember/controller';
+import Controller from "@ember/controller";
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object'
 import { tracked } from '@glimmer/tracking';
+import { oneWay } from '@ember/object/computed';
+import { isEmpty } from '@ember/utils';
+import { restartableTask } from 'ember-concurrency';
 
+export default class ServicesController extends Controller {
+  @service store;
 
-export default class ServiceListController extends Controller {
-    // queryParams = ['q'];
+  queryParams = ['q'];
 
-    // @tracked q = null;
+  q = null;
 
-    // @tracked model;
-  
-    // get filteredArticles() {
-    //   let category = this.category;
-    //   let articles = this.model;
-  
-    //   if (category) {
-    //     return articles.filterBy('category', category);
-    //   } else {
-    //     return articles;
-    //   }
-    // }
+  limit = 10;
+  dir = 'asc';
+  sort = 'name';
+
+  @tracked page = 1;
+  @tracked services = [];
+  @tracked meta = null;
+
+  @oneWay('fetchServices.isRunning') isLoading;
+
+  columns = [
+    {
+      label: 'Name',
+      valuePath: 'name',
+      cellComponent: 'table/cell/truncate',
+      sortable: false,
+      width: '250px'
+    },
+    {
+      label: 'Description',
+      valuePath: 'description',
+      cellComponent: 'table/cell/truncate',
+      sortable: false
+    },
+    {
+      label: 'Date:',
+      valuePath: 'updatedAt',
+      cellComponent: 'table/cell/date',
+      format: 'MMM. DD, YYYY',
+      sortable: false,
+      width: '115px'
+    }
+  ];
+
+  @restartableTask *fetchServices() {
+    // this.services = [];
+
+    let query = this.getProperties(['page', 'sort', 'limit', 'dir'])
+
+    if (this.q) {
+      query.query = this.q;
+    }
+
+    let records = yield this.store.query('service', query);
+
+    // this.services = records;
+    this.services.pushObjects(records.toArray());
+    this.meta = records.meta;
+
+    // this.canLoadMore = !isEmpty(records);
+  };
+
+  @action
+  sortChange(isAscending, sort) {
+    let dir = isAscending ? 'asc' : 'desc';
+    this.setProperties({
+      dir,
+      sort
+    });
+
+    this.fetchServices.perform();
+  };
+
+  @action
+  onScrolledToBottom() {
+    if (this.meta.pages > this.page) {
+      this.incrementProperty('page');
+      this.fetchServices.perform();
+    }
   }
+
+  @action
+  setPage(page) {
+    let totalPages = this.meta.pages;
+    let currPage = this.page;
+
+    if (page < 1 || page > totalPages || page === currPage) {
+      return;
+    }
+
+    this.page = page;
+    this.services.clear();
+    this.fetchServices.perform();
+  }
+}

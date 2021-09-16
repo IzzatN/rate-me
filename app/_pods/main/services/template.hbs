@@ -1,2 +1,12 @@
 {{page-title "Services"}}
-<Table @filteredData={{this.model}} />
+<Table::Base
+  @height="100%"
+  @dir={{this.dir}}
+  @sort={{this.sort}}
+  @page={{this.page}}
+  @class=""
+  @model={{this.services}}
+  @columns={{this.columns}}
+  @meta={{this.meta}}
+  @setPage={{this.setPage}}
+  @sortChange={{this.sortChange}} />

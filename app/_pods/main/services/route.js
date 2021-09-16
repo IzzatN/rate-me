@@ -8,14 +8,11 @@ export default class ServiceListRoute extends Route {
     };
 
     model({ q }) {
-        // return this.store.findAll('service').then(services => {
-        //     if (q === 'recent') {
-        //         return services.sortBy('updatedAt').reverse();
-        //     } else {
-        //         return services;
-        //     }
-        // })
+        // return this.store.query('service', { query: q });
+    }
 
-        return this.store.query('service', { query: q });
+    setupController(controller, model) {
+        super.setupController(...arguments);
+        this.controller.fetchServices.perform();
     }
 }
