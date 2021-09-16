@@ -10,6 +10,9 @@ module.exports = {
           sky: colors.sky,
           teal: colors.teal,
         },
+        transitionProperty: {
+          'height': 'height'
+         }
       },
     },
     variants: {

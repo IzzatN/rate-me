@@ -8,7 +8,7 @@ export default class MainRoute extends Route {
   //   this.session.requireAuthentication(transition, 'login');
   // }
 
-  model() {
-    return this.store.findAll('category');
-  }
+  // model() {
+  //   return this.store.findAll('category');
+  // }
 }
