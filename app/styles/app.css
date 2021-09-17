@@ -6,6 +6,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "table.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Bebas+Neue&family=Karantina:wght@300;500;700&family=Montserrat:wght@300;500;700&family=Oswald:wght@300;500;700&family=Roboto+Slab:wght@300;500;700&display=swap');
 @import url(//db.onlinewebfonts.com/c/9c8d3dbada8c85ef456102814fdb5b12?family=Venus+Rising);
 

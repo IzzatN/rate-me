@@ -8,6 +8,8 @@ export default Component.extend({
 
   dir: 'asc',
   sort: '',
+  meta: null,
+  page: null,
 
   toggleRow(id, toggleTo) {
     let { selectedItems } = this;
@@ -21,10 +23,6 @@ export default Component.extend({
     return toggleTo;
   },
 
-  mergedColumns: computed('columns', function() {
-    return this.columns;
-  }),
-
   sortedModel: sort('model', 'sortBy'),
 
   sortBy: computed('dir', 'sort', 'defaultSort', function() {
@@ -33,8 +31,10 @@ export default Component.extend({
   }),
 
   table: computed('sortedModel', function() {
-    let { mergedColumns, sortedModel } = this;
-    let table = Table.create({ columns: mergedColumns, rows: sortedModel });
+    let rows = this.sortedModel;
+    let columns = this.columns;
+
+    let table = Table.create({ columns, rows });
 
     let { sort } = this;
     if (sort) {

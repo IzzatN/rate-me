@@ -47,7 +47,7 @@
                 src="	https://thumbs.dreamstime.com/b/technology-connecting-people-around-world-37443140.jpg">
               <div class="absolute inset-0 bg-indigo-700 mix-blend-multiply"></div>
             </div>
-            <div class="relative px-4 py-16 sm:px-6 sm:py-16 lg:py-24 lg:px-8">
+            <div class="relative px-4 py-16 sm:px-6 lg:py-32 lg:px-8">
               <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                 <span class="block text-white uppercase font-venusRising">Auto Aid</span>
               </h1>
@@ -56,16 +56,18 @@
                 GOALS UNITED BORDER <br>(MAQSADLAR BIRLASHGAN SARHAD("-")
               </p> --}}
 
-              <p class="mt-16 max-w-lg mx-auto text-center text-lg text-indigo-200 sm:max-w-3xl">
-                Enter as
-              </p>
-              <div class="max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                <div class="flex flex-col self-center max-w-2xl mx-auto">
-                  {{#if this.currentUser}}
-                    <LinkTo @route="main" class="self-center bg-blue-300 bg-opacity-40 hover:bg-opacity-50 rounded px-8 py-3 text-lg text-gray-200 hover:text-white hover:underline">
-                      Find service
-                    </LinkTo>
-                  {{else}}
+              {{#if this.currentUser}}
+                <div class="mt-16 mx-auto text-center text-lg text-indigo-200">
+                  <LinkTo @route="main" class="bg-blue-300 bg-opacity-40 hover:bg-opacity-50 rounded px-8 py-3 text-lg text-gray-200 hover:text-white hover:underline">
+                    Find service
+                  </LinkTo>
+                </div>
+              {{else}}
+                <p class="mt-16 max-w-lg mx-auto text-center text-lg text-indigo-200 sm:max-w-3xl">
+                  Enter as
+                </p>
+                <div class="max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+                  <div class="flex flex-col self-center max-w-2xl mx-auto">
                     <dl
                       class="text-white mb-6 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
                       <div class="text-center bg-blue-400 px-4 py-5 sm:p-10">
@@ -86,9 +88,9 @@
                         Proceed to Main page.
                       </LinkTo>
                     </div>
-                  {{/if}}
+                  </div>
                 </div>
-              </div>
+              {{/if}}
             </div>
           </div>
         </div>

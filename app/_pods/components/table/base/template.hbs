@@ -1,0 +1,59 @@
+{{#light-table table
+  height=(if @height @height "100%")
+  extra=(hash
+   tableName=tableName
+  )
+  width="100%"
+  responsive=true
+  class=(concat "table " class)
+  as |t|}}
+  {{t.head
+   fixed=true
+   resizeOnDrag=true
+   onColumnClick=(action "onColumnClick")
+   iconSortable=""
+   iconAscending="fa fa-sort-asc"
+   iconDescending="fa fa-sort-desc"}}
+  {{#t.body
+   canSelect=false
+   selectOnClick=false
+   onRowClick=@onRowClick
+   onScrolledToBottom=@onScrolledToBottom
+   rowComponent=rowComponent
+   as |body|}}
+    {{#if isLoading}}
+      {{#body.loader}}
+        <LoadingSpinner />
+      {{/body.loader}}
+    {{else if (and (not loading) table.isEmpty @emptyTableText)}}
+      {{#body.no-data}}
+        <h3 class="text-center">{{@emptyTableText}}</h3>
+      {{/body.no-data}}
+    {{/if}}
+  {{/t.body}}
+  {{#if meta}}
+    {{#t.foot fixed=true as |columns|}}
+      <tr>
+        <td class="align-center" colspan={{columns.length}}>
+          <ul class="pagination pagination-sm">
+            <li class={{if (eq page 1) 'disabled'}}>
+              <a {{on 'click' (fn @setPage (dec page))}} href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {{#each (range 1 meta.pages true) as |p|}}
+              <li class={{if (eq p page) 'active'}}>
+                <a {{on 'click' (fn @setPage p)}} href="#">{{p}}</a>
+              </li>
+            {{/each}}
+            <li class={{if (eq page meta.pages) 'disabled'}}>
+              <a {{on 'click' (fn @setPage (inc page))}} href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    {{/t.foot}}
+  {{/if}}
+{{/light-table}}

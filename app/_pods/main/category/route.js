@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 
-export default class ServicessRoute extends Route {
+export default class CategorysRoute extends Route {
     model({ value }) {
         return this.store.queryRecord('category', { value }, { reload: true });
     }
