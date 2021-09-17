@@ -1,26 +1,26 @@
-<section aria-labelledby="categories-list">
-    <div class="bg-white rounded-lg shadow">
-      <div class="p-6">
-        <h2 id="categories-list" class="text-base font-medium text-gray-900">
-          Categories
-        </h2>
-        <div class="mt-6 flow-root">
-          <ul class="-my-4 divide-y divide-gray-200 text-sm">
-            {{#each @categories as |category|}}
-              <LinkTo @route="main.category" @model={{category.value}} @tagName="li" class="flex items-center cursor-pointer p-2 space-x-3 capitalize hover:bg-gray-50">
-                {{category.name}}
-                {{!-- Need to Add the number of services that fall into current category --}}
-              </LinkTo>
-            {{/each}}
-            <li class="flex items-center p-2 space-x-3">
-            </li>
-          </ul>
-        </div>
-        <div class="mt-6">
-          <a href="#" class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-            View all
-          </a>
-        </div>
+<section {{did-insert this.fetchCategories}} aria-labelledby="categories-list">
+  <div class="bg-white rounded-lg shadow">
+    <div class="p-6">
+      <h2 id="categories-list" class="text-base font-medium text-gray-900">
+        Categories
+      </h2>
+      <div style="height:{{sidebarHeight}}px" class="transition-height duration-300 ease-in-out pt-8 overflow-hidden" >
+        <ul class="-my-4 divide-y divide-gray-200 text-sm">
+          {{#each this.categories as |category|}}
+            <LinkTo @route="main.category" @model={{category.value}} @tagName="li" class="flex items-center cursor-pointer p-2 space-x-3 capitalize hover:bg-gray-50">
+              {{category.name}}
+              {{!-- Need to Add the number of services that fall into current category --}}
+            </LinkTo>
+          {{/each}}
+          <li class="flex items-center p-2 space-x-3">
+          </li>
+        </ul>
+      </div>
+      <div class="mt-6 cursor-pointer ">
+        <span {{on 'click' this.toggleView}} class=" w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+          {{if isExpanded "View less" "View all"}} 
+        </span>
       </div>
     </div>
+  </div>
 </section>
