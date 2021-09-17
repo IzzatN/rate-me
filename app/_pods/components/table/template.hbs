@@ -23,42 +23,44 @@
           <tbody class="bg-white divide-y divide-gray-200">
             {{#each @filteredData as |item|}}
             <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <td class="px-4 py-4 ">
                 <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
+                  <div class="">
                     <img class="h-10 w-10 rounded-full ring-1 ring-gray-300" src="{{item.company.logoUrl}}" alt="">
                   </div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+                  {{!-- <div class="ml-4"> --}}
+                    <div class="px-4 py-4 truncate w-48 text-sm font-medium text-gray-900">
                       {{item.name}} </div>
                     {{!-- <div class="text-sm text-gray-500">
                       jane.cooper@example.com
                     </div> --}}
-                  </div>
+                  {{!-- </div> --}}
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{item.description}}</div>
+              <td class="px-4 py-4 ">
+                <div class="line-clamp-2 truncate w-56 text-sm text-gray-900">{{item.description}}</div>
                 {{!-- <div class="text-sm text-gray-500">{{item.updatedAt}}</div> --}}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <td class="px-4 py-4 ">
                 <span class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   {{moment-format item.updatedAt 'MM.DD.YY'}}
                 </span>
               </td>
-              {{!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {{!-- <td class="px-6 py-4  text-sm text-gray-500">
                 Admin
               </td> --}}
             </tr>
 
             {{/each}}
+
           </tbody>
+          
         </table>
-        {{#if @query}}
+        {{#if @query}} 
         <LinkTo @route="main.services" @query={{hash q=@query }} href="#"
-          class="block bg-gray-50 text-sm font-medium text-gray-500 text-center px-4 py-4 hover:text-gray-700 sm:rounded-b-lg">
-          See more</LinkTo>
-        {{/if}}
+            class="block bg-gray-50 text-sm font-medium text-gray-500 text-center px-4 py-4 hover:text-gray-700 sm:rounded-b-lg">
+            See more</LinkTo>
+            {{/if}}
       </div>
     </div>
   </div>
