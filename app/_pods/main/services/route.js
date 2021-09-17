@@ -1,18 +1,22 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object'
+import { next } from '@ember/runloop';
 
 export default class ServiceListRoute extends Route {
-    queryParams = {
-        q: {
-            refreshModel: true
-        }
-    };
+  setupController(controller, model) {
+    super.setupController(...arguments);
 
-    model({ q }) {
-        // return this.store.query('service', { query: q });
-    }
+    controller.services.clear();
+    controller.fetchServices.perform();
+  }
 
-    setupController(controller, model) {
-        super.setupController(...arguments);
+  @action
+  queryParamsDidChange(change) {
+    if (this.controller) {
+      next(()=> {
+        this.controller.services.clear();
         this.controller.fetchServices.perform();
+      })
     }
+  }
 }

@@ -5,7 +5,7 @@ export default class ServiceModel extends Model {
   @attr('string') name;
   @attr('string') description;
   @attr('date') updatedAt;
-
+  @attr('string') rank;
 
   @belongsTo() company;
   @hasMany() categories;

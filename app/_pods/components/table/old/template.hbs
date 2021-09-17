@@ -12,12 +12,12 @@
                 Description
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date
+                Dates
               </th>
-              {{!-- <th scope="col"
+              <th scope="col"
                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Role
-              </th> --}}
+                Rank
+              </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -46,9 +46,9 @@
                   {{moment-format item.updatedAt 'MM.DD.YY'}}
                 </span>
               </td>
-              {{!-- <td class="px-6 py-4  text-sm text-gray-500">
-                Admin
-              </td> --}}
+              <td class="px-6 py-4  text-sm text-gray-500">
+                {{or item.rank '0'}}
+              </td>
             </tr>
 
             {{/each}}

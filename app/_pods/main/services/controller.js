@@ -13,9 +13,9 @@ export default class ServicesController extends Controller {
 
   q = null;
 
-  limit = 10;
+  perPage = 10;
   dir = 'asc';
-  sort = 'name';
+  sort = null;
 
   @tracked page = 1;
   @tracked services = [];
@@ -48,9 +48,9 @@ export default class ServicesController extends Controller {
   ];
 
   @restartableTask *fetchServices() {
-    // this.services = [];
+    let query = this.getProperties(['page', 'sort', 'dir']);
 
-    let query = this.getProperties(['page', 'sort', 'limit', 'dir'])
+    query.per_page = this.perPage;
 
     if (this.q) {
       query.query = this.q;
