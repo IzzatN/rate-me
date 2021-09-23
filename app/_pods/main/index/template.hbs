@@ -1,20 +1,20 @@
 <div class="">
     <h1 class="pl-2 mb-2">Popular Services</h1>
     <div class="px-4 sm:px-0">
-        <Table::Old @filteredData={{this.model}} @query="popular" />
+        <Table::Old @filteredData={{this.popularServices}} @query="popular" />
     </div>
 </div>
 
 <div class="mt-4">
     <h1 class="pl-2 mb-2">Recent Services</h1>
     <div class="px-4 sm:px-0">
-        <Table::Old @filteredData={{this.model}} @query="recent" />
+        <Table::Old @filteredData={{this.recentServices}} @query="recent" />
     </div>
 </div>
 
 <div class="mt-4">
     <h1 class="pl-2 mb-2">Top Services</h1>
     <div class="px-4 sm:px-0">
-        <Table::Old @filteredData={{this.model}} @query="top" />
+        <Table::Old @filteredData={{this.topServices}} @query="top-ranked" @showRating={{true}} />
     </div>
 </div>

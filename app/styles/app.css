@@ -649,3 +649,8 @@ li a {
 }
 
 /*------------Loader end!-----------*/
+
+
+.service-rating > div  {
+  display: inline-flex !important;
+}
