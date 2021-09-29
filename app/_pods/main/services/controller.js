@@ -50,7 +50,7 @@ export default class ServicesController extends Controller {
       cellComponent: 'table/cell/date',
       format: 'DD. MM. YYYY',
       sortable: false,
-      width: '115px'
+      width: '120px'
     }
   ];
 
