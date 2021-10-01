@@ -6,6 +6,9 @@ import { oneWay } from '@ember/object/computed';
 import { isEmpty } from '@ember/utils';
 import { restartableTask } from 'ember-concurrency';
 
+let ServiceTableRowComponent = Ember.Component.extend({ 
+  columns: 'tr',
+});
 export default class ServicesController extends Controller {
   @service store;
 
@@ -23,13 +26,17 @@ export default class ServicesController extends Controller {
 
   @oneWay('fetchServices.isRunning') isLoading;
 
+ 
+
   columns = [
     {
+      
       label: 'Name',
       valuePath: 'name',
       cellComponent: 'table/cell/truncate',
       sortable: false,
-      width: '250px'
+      width: '250px',
+
     },
     {
       label: 'Description',
@@ -38,12 +45,12 @@ export default class ServicesController extends Controller {
       sortable: false
     },
     {
-      label: 'Date:',
+      label: 'Date',
       valuePath: 'updatedAt',
       cellComponent: 'table/cell/date',
-      format: 'MMM. DD, YYYY',
+      format: 'DD. MM. YYYY',
       sortable: false,
-      width: '115px'
+      width: '120px'
     }
   ];
 
