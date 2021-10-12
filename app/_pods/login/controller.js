@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 export default class LoginController extends Controller {
   @service session;
   @service('current-user') currentUserService;
+  @service router;
 
   queryParams = ['isConsumer'];
 
@@ -38,7 +39,7 @@ export default class LoginController extends Controller {
     }
 
     if (this.session.isAuthenticated) {
-      this.transitionToRoute('main');
+      this.router.transitionTo('main');
     }
   }
 }

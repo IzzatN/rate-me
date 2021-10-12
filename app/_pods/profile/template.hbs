@@ -153,9 +153,9 @@
                         clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <input id="search"
+                  <Input id="search"
                     class="block w-full text-white bg-white bg-opacity-20 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 focus:text-gray-900 placeholder-white focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-500 focus:ring-0 sm:text-sm"
-                    placeholder="Search" type="search" name="search">
+                    placeholder="Search" type="search" @na /me="search" />
                 </div>
               </div>
             </div>
@@ -304,7 +304,7 @@
             </nav>
           </aside>
 
-          <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
+          <form class="divide-y divide-gray-200 lg:col-span-9" {{on "submit" this.save}}>
             <!-- Profile section -->
             <div class="py-6 px-4 sm:p-6 lg:pb-8">
               <div>
@@ -323,9 +323,11 @@
 
                     <div class="mt-1 rounded-md shadow-sm flex">
 
-                      <input type="text" name="username" id="username" autocomplete="username"
+                      <Input @type="text" @name="username" disabled={{true}} @id="username" autocomplete="username"
                         class="focus:ring-sky-500 focus:border-sky-500 flex-grow block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                        value={{this.model.userName}}>
+                        @value={{this.userChangeset.userName}} />
+
+                      <Changeset::FieldErrors @field={{this.userChangeset.error.userName}} />
                     </div>
                   </div>
 
@@ -350,7 +352,7 @@
                   <div class="mt-1 lg:hidden">
                     <div class="flex items-center">
                       <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12" aria-hidden="true">
-                        <img class="rounded-full h-full w-full" src={{this.model.photoUrl}} alt="">
+                        <img class="rounded-full h-full w-full" src={{this.userChangeset.photoUrl}} alt="">
                       </div>
                       <div class="ml-5 rounded-md shadow-sm">
                         <div
@@ -360,21 +362,21 @@
                             <span>Change</span>
                             <span class="sr-only"> user photo</span>
                           </label>
-                          <input id="mobile-user-photo" name="user-photo" type="file"
-                            class="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
+                          <Input id="mobile-user-photo" name="user-photo" type="file"
+                            class="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" />
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div class="hidden relative rounded-full overflow-hidden lg:block">
-                    <img class="relative rounded-full w-40 h-40" src={{this.model.photoUrl}} alt="">
+                    <img class="relative rounded-full w-40 h-40" src={{this.userChangeset.photoUrl}} alt="">
                     <label for="desktop-user-photo"
                       class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                       <span>Change</span>
                       <span class="sr-only"> user photo</span>
-                      <input type="file" id="desktop-user-photo" name="user-photo"
-                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
+                      <Input @type="file" id="desktop-user-photo" name="user-photo"
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" />
                     </label>
                   </div>
                 </div>
@@ -383,38 +385,72 @@
               <div class="mt-6 grid grid-cols-12 gap-6">
                 <div class="col-span-12 sm:col-span-6">
                   <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                  <input type="text" name="first-name" id="first-name" autocomplete="first-name"
+                  <Input @type="text" @name="first-name" @id="first-name" autocomplete="first-name"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-                    value={{this.model.firstName}}>
+                    @value={{this.userChangeset.firstName}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.firstName}} />
+
                 </div>
 
                 <div class="col-span-12 sm:col-span-6">
                   <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                  <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                  <Input @type="text" @name="last-name" @id="last-name" autocomplete="family-name"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-                    value={{this.model.lastName}}>
+                    @value={{this.userChangeset.lastName}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.lastName}} />
                 </div>
 
-                <div class="col-span-12">
+
+                <div class="col-span-12 sm:col-span-6">
+                  <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <Input @type="password" @name="password" @id="password" autocomplete=""
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                    @value={{this.userChangeset.password}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.password}} />
+                </div>
+
+
+                <div class="col-span-12 sm:col-span-6">
+                  <label for="password-confirm" class="block text-sm font-medium text-gray-700">Password
+                    confirmation</label>
+                  <Input @type="password" @name="password-confirm" @id="password-confirm" autocomplete=""
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                    @value={{this.userChangeset.passwordConfirmation}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.passwordConfirmation}} />
+                </div>
+
+
+                {{!-- <div class="col-span-12">
                   <label for="url" class="block text-sm font-medium text-gray-700">URL</label>
-                  <input type="text" name="url" id="url"
+                  <Input @type="text" @name="url" id="url"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                </div>
+                </div> --}}
 
-                {{#each this.model.companies as |company index|}}
+                {{#each this.userChangeset.companies as |company index|}}
                 <div class="col-span-12 sm:col-span-6">
                   <label for="company" class="block text-sm font-medium text-gray-700">Company {{add index 1}}</label>
-                  <input type="text" name="company" disabled={{true}} id="company" autocomplete="organization"
+                  <Input @type="text" @name="company" disabled={{true}} @id="company" autocomplete="organization"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-                    value={{company.name}}>
+                    @value={{company.name}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.name}} />
                 </div>
                 {{/each}}
+
+
+                <div class="col-span-12 sm:col-span-6">
+                  <label for="text" class="block text-sm font-medium text-gray-700">Phone number</label>
+                  <Input @type="text" @name="phone" @id="phone-user" autocomplete=""
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
+                    @value={{this.userChangeset.phone}} />
+                  <Changeset::FieldErrors @field={{this.userChangeset.error.phone}} />
+
+                </div>
               </div>
             </div>
 
             <!-- Privacy section -->
             <div class="pt-6 divide-y divide-gray-200">
-              <div class="px-4 sm:px-6">
+              {{!-- <div class="px-4 sm:px-6">
                 <div>
                   <h2 class="text-lg leading-6 font-medium text-gray-900">Privacy</h2>
                   <p class="mt-1 text-sm text-gray-500">
@@ -499,7 +535,7 @@
                     </button>
                   </li>
                 </ul>
-              </div>
+              </div> --}}
               <div class="mt-4 py-4 px-4 flex justify-end sm:px-6">
                 <button type="button"
                   class="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">

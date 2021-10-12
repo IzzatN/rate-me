@@ -9,6 +9,7 @@ const AUTHENTICATOR = 'authenticator:credentials';
 export default class RegisterController extends Controller {
   @service notifications;
   @service session;
+  @service router;
   @service('current-user') currentUserService;
   @alias('currentUserService.user') currentUser;
 
@@ -42,7 +43,7 @@ export default class RegisterController extends Controller {
       this.notifications.success('Registered successfully!');
 
       await this.currentUserService.load()
-      this.transitionToRoute('profile');
+      this.router.transitionTo('profile');
     } catch (e) {
       console.error(e);
       this.notifications.error(
