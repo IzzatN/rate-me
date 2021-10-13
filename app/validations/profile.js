@@ -1,7 +1,6 @@
 import {
     validatePresence,
     validateLength,
-    validateConfirmation
   } from 'ember-changeset-validations/validators';
   
   export default {
@@ -19,10 +18,5 @@ import {
     // photoUrl: [
     //   validatePresence({ presence: true })
     // ],
-    password: [
-      validateLength({ allowBlank: true, min: 8 })
-    ],
-    passwordConfirmation: [
-      validateConfirmation({ on: 'password' })
-    ]
+   
   };

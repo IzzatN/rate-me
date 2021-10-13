@@ -3,7 +3,7 @@
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="relative flex flex-wrap items-center justify-center lg:justify-between">
         <!-- Logo -->
-               <div class="absolute left-0 py-5 flex-shrink-0 lg:static">
+        <div class="absolute left-0 py-5 flex-shrink-0 lg:static">
           <div class="p-2 rounded-md bg-white">
             <LinkTo @route="main">
               <img class="  block h-8 w-auto" src="{{img-src 'images/logo-png.png'}}" alt="Auto Aid">
@@ -12,8 +12,9 @@
         </div>
 
         <!-- Right section on desktop -->
+        {{#if this.currentUser}}
         <div class="hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5">
-          <button type="button"
+          {{!-- <button type="button"
             class="flex-shrink-0 p-1 text-cyan-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white">
             <span class="sr-only">View notifications</span>
             <!-- Heroicon name: outline/bell -->
@@ -22,18 +23,16 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
-          </button>
+          </button> --}}
 
           <!-- Profile dropdown -->
           <div class="ml-4 relative flex-shrink-0">
             <div>
-              <button type="button"
+              <button {{on 'click' this.toggleDropdownMenu}} type="button"
                 class="bg-white rounded-full flex text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100"
                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="">
+                <img class="h-8 w-8 rounded-full" src={{this.currentUser.photoUrl}} alt="">
               </button>
             </div>
 
@@ -47,22 +46,32 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div
-              class="hidden origin-top-right z-40 absolute -right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            <div class="{{if this.isMenuOpen " opacity-100 scale-100" " opacity-0 scale-0" }} transform transition
+              ease-in duration-200 origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1
+              ring-black ring-opacity-5 py-1 focus:outline-none" style="min-width: 12rem;" role="menu"
+              aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
               <!-- Active: "bg-gray-100", Not Active: "" -->
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">Your Profile</a>
+              <LinkTo @route="profile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-0">Your Profile</LinkTo>
 
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                id="user-menu-item-1">Settings</a>
+              <LinkTo @route="business" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-1">Business</LinkTo>
 
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                id="user-menu-item-2">Sign out</a>
+              <LinkTo @route="logout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-2">Sign out</LinkTo>
             </div>
           </div>
         </div>
 
+        
+        {{else}}
+        <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-3">
+          <LinkTo @route="login"
+            class="whitespace-nowrap bg-white border border-transparent py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+            Sign in
+          </LinkTo>
+        </div>
+        {{/if}}
         <div class="w-full py-5 lg:border-t lg:border-white lg:border-opacity-20">
           <div class="lg:grid lg:grid-cols-3 lg:gap-8 lg:items-center">
             <!-- Left nav -->

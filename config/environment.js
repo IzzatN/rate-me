@@ -25,7 +25,7 @@ module.exports = function (environment) {
 
     API: {
       // configure for specific environments below
-      host: 'http://localhost:3001'
+      host: 'http://localhost:3000'
     },
 
     'ember-cli-notifications': {
@@ -40,7 +40,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.API.host = 'http://localhost:3001';
+    ENV.API.host = 'http://localhost:3000';
     ENV.API.apiNamespace = 'api';
   }
 
