@@ -5,11 +5,10 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object'
 
 
-export default class ProfileController extends Controller {
+export default class BusinessController extends Controller {
     @service('current-user') currentUserService;
     @alias('currentUserService.user') currentUser;
     @service notifications;
-
     @tracked isMenuOpen = false;
 
     @action
@@ -21,4 +20,5 @@ export default class ProfileController extends Controller {
     toggleDropdownMenu() {
         this.isMenuOpen = !this.isMenuOpen;
     }
+
 }
