@@ -4,19 +4,18 @@ import {
   } from 'ember-changeset-validations/validators';
   
   export default {
-    firstName: [
+    name: [
       validatePresence({ presence: true }),
-      validateLength({ min: 3 })
+      validateLength({ min: 3, max: 30})
     ],
-    lastName: [
+    description: [
       validatePresence({ presence: true }),
-      validateLength({ min: 3 })
+      validateLength({ min: 10, max: 140})
     ],
-    phone: [
-      validatePresence({ presence: true })
-    ],
+    // phone: [
+    //   validatePresence({ presence: true })
+    // ],
     // photoUrl: [
     //   validatePresence({ presence: true })
     // ],
-   
   };
